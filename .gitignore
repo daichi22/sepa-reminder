@@ -1,0 +1,21 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+
+# VSCode settings
+.vscode/
+
+# 仮想環境（Windows/Linux/Mac対応）
+venv/
+.venv/
+
+# 環境変数ファイル（LINEの秘密情報など）
+.env
+
+# ngrok関連（もしログ等を保存している場合）
+ngrok.yml
+*.log
+
+# Macの不要ファイル
+.DS_Store
