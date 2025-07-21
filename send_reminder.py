@@ -3,7 +3,7 @@ import os
 import requests
 
 LINE_ACCESS_TOKEN = os.environ.get('LINE_ACCESS_TOKEN')
-GROUP_ID = os.environ.get('_GROUP_ID')
+LINE_GROUP_ID = os.environ.get('LINE_GROUP_ID')
 
 headers = {
     'Authorization': f'Bearer {LINE_ACCESS_TOKEN}',
