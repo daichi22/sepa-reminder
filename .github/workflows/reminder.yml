@@ -1,18 +1,29 @@
 name: LINEリマインダーボット
 
 on:
-  workflow_dispatch:  # 👈 これを追加！
-  push:
-    paths:
-      - .github/workflows/reminder.yml
+  workflow_dispatch:   # 手動実行用
   schedule:
-    - cron: '0 12 * * 2'  # 火曜21時（JST）
-    - cron: '0 12 * * 6'  # 土曜21時（JST）
-    - cron: '0 12 * * 0'  # 日曜21時（JST）
+    - cron: '0 12 * * 2'   # 火曜21時（JST）
+    - cron: '0 12 * * 6'   # 土曜21時（JST）
+    - cron: '0 12 * * 0'   # 日曜21時（JST）
 
 jobs:
   remind:
     runs-on: ubuntu-latest
     steps:
-      - name: Echo reminder
-        run: echo "鍵とネット誰ですか？"
+      - name: リポジトリをクローン
+        uses: actions/checkout@v3
+
+      - name: Pythonをセットアップ
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: requestsパッケージをインストール
+        run: pip install -r requirements.txt
+
+      - name: 環境変数を設定して実行 # このステップ名と
+        env:
+          LINE_ACCESS_TOKEN: ${{ secrets.LINE_ACCESS_TOKEN }}
+          LINE_GROUP_ID: ${{ secrets.LINE_GROUP_ID }}
+        run: python send_reminder.py # ここをこの通りに修正してください
