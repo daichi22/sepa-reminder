@@ -1,25 +1,17 @@
 name: LINEリマインダーボット
 
 on:
+  push:
+    paths:
+      - .github/workflows/reminder.yml
   schedule:
-    - cron: '0 12 * * 2'  # 火曜21時（UTCで12時）
-    - cron: '0 12 * * 6'  # 土曜21時
-    - cron: '0 12 * * 0'  # 日曜21時
+    - cron: '0 12 * * 2'
+    - cron: '0 12 * * 6'
+    - cron: '0 12 * * 0'
 
 jobs:
-  reminder:
+  remind:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.9'
-
-      - name: Install dependencies
-        run: pip install -r requirements.txt
-
-      - name: Run reminder script
-        run: python push_test.py
+      - name: Echo reminder
+        run: echo "リマインダーの時間です"
