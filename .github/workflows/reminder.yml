@@ -1,17 +1,18 @@
 name: LINEリマインダーボット
 
 on:
+  workflow_dispatch:  # 👈 これを追加！
   push:
     paths:
       - .github/workflows/reminder.yml
   schedule:
-    - cron: '0 12 * * 2'
-    - cron: '0 12 * * 6'
-    - cron: '0 12 * * 0'
+    - cron: '0 12 * * 2'  # 火曜21時（JST）
+    - cron: '0 12 * * 6'  # 土曜21時（JST）
+    - cron: '0 12 * * 0'  # 日曜21時（JST）
 
 jobs:
   remind:
     runs-on: ubuntu-latest
     steps:
       - name: Echo reminder
-        run: echo "リマインダーの時間です"
+        run: echo "鍵とネット誰ですか？"
