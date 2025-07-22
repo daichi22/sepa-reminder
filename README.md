@@ -73,8 +73,3 @@ python send_reminder.py
 ## ライセンス
 
 MIT License
-
----
-
-必要に応じて `send_reminder.py` や `line_reminder.yml` の中身もREADMEに追記できます。コードも共有していただければ、該当部分を解説付きでREADMEに追加可能です。希望があればお知らせください。
-
